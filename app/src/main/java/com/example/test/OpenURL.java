@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.telephony.SmsManager;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -27,14 +28,11 @@ public class OpenURL extends AppCompatActivity {
         load.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String url = input.getText().toString();
+                String sms = input.getText().toString();
 
-                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
-                Intent chooser = Intent.createChooser(intent,"Choose an application");
-                if(intent.resolveActivity(getPackageManager()) != null){
-                    startActivity(chooser);
-                }
-
+                Intent intent = new Intent(Intent.ACTION_VIEW,Uri.parse(sms));
+                Intent chooser = new Intent(Intent.createChooser(intent,"Choose an application"));
+                startActivity(intent);
             }
         });
     }
