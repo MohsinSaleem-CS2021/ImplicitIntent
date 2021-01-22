@@ -13,8 +13,11 @@ import android.webkit.WebViewClient;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import java.net.URL;
+
 public class MainActivity extends AppCompatActivity {
 
+    String URL;
     private WebView webView;
     private ProgressBar progressBar;
     @Override
@@ -52,10 +55,8 @@ public class MainActivity extends AppCompatActivity {
         });
 
         Intent intent = getIntent();
-        if(intent != null){
-            String url = intent.getData().toString();
-            webView.loadUrl(url);
-        }
+        URL = intent.getStringExtra("URL");
+        webView.loadUrl(URL);
         };
 
     }

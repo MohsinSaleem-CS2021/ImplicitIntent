@@ -28,11 +28,14 @@ public class OpenURL extends AppCompatActivity {
         load.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String sms = input.getText().toString();
+                String URL = input.getText().toString();
 
-                Intent intent = new Intent(Intent.ACTION_VIEW,Uri.parse(sms));
-                Intent chooser = new Intent(Intent.createChooser(intent,"Choose an application"));
+                Intent intent = new Intent(OpenURL.this,MainActivity.class);
+                intent.putExtra("URL",URL);
                 startActivity(intent);
+
+//                Intent chooser = new Intent(Intent.createChooser(intent,"Choose an application"));
+//                startActivity(chooser);
             }
         });
     }
